@@ -15,10 +15,29 @@ input_shape {
 }
 
 layer {
+  name: 'data_xform'
+  type: 'Python'
+  bottom: 'data'
+  top: 'data_scaled'
+  python_param {
+    module: 'transform.torch_image_transform_layer'
+    layer: 'TorchImageTransformLayer'
+  }
+}
+
+layer {
     name: "ConvNdBackward1"
     type: "Convolution"
-    bottom: "data"
+    bottom: "data_scaled"
     top: "ConvNdBackward1"
+    param {
+      lr_mult: 0
+      decay_mult: 0
+    }
+    param {
+      lr_mult: 0
+      decay_mult: 0
+    }
     convolution_param {
         num_output: 1
         pad: 0
@@ -31,6 +50,14 @@ layer {
     type: "Convolution"
     bottom: "ConvNdBackward1"
     top: "ConvNdBackward2"
+    param {
+      lr_mult: 0
+      decay_mult: 0
+    }
+    param {
+      lr_mult: 0
+      decay_mult: 0
+    }
     convolution_param {
         num_output: 2
         pad: 1
@@ -72,6 +99,14 @@ layer {
     type: "Scale"
     bottom: "BatchNormBackward4"
     top: "BatchNormBackward4"
+    param {
+      lr_mult: 0
+      decay_mult: 0
+    }
+    param {
+      lr_mult: 0
+      decay_mult: 0
+    }
     scale_param {
         bias_term: true
     }
@@ -116,6 +151,14 @@ layer {
     type: "Scale"
     bottom: "BatchNormBackward7"
     top: "BatchNormBackward7"
+    param {
+      lr_mult: 0
+      decay_mult: 0
+    }
+    param {
+      lr_mult: 0
+      decay_mult: 0
+    }
     scale_param {
         bias_term: true
     }
@@ -172,6 +215,14 @@ layer {
     type: "Scale"
     bottom: "BatchNormBackward11"
     top: "BatchNormBackward11"
+    param {
+      lr_mult: 0
+      decay_mult: 0
+    }
+    param {
+      lr_mult: 0
+      decay_mult: 0
+    }
     scale_param {
         bias_term: true
     }
@@ -216,6 +267,14 @@ layer {
     type: "Scale"
     bottom: "BatchNormBackward14"
     top: "BatchNormBackward14"
+    param {
+      lr_mult: 0
+      decay_mult: 0
+    }
+    param {
+      lr_mult: 0
+      decay_mult: 0
+    }
     scale_param {
         bias_term: true
     }
@@ -270,6 +329,12 @@ layer {
     type: "Scale"
     bottom: "BatchNormBackward18"
     top: "BatchNormBackward18"
+    param {
+      lr_mult: 1
+    }
+    param {
+      lr_mult: 2
+    }
     scale_param {
         bias_term: true
     }
@@ -312,6 +377,12 @@ layer {
     type: "Scale"
     bottom: "BatchNormBackward21"
     top: "BatchNormBackward21"
+    param {
+      lr_mult: 1
+    }
+    param {
+      lr_mult: 2
+    }
     scale_param {
         bias_term: true
     }
@@ -354,6 +425,12 @@ layer {
     type: "Scale"
     bottom: "BatchNormBackward24"
     top: "BatchNormBackward24"
+    param {
+      lr_mult: 1
+    }
+    param {
+      lr_mult: 2
+    }
     scale_param {
         bias_term: true
     }
@@ -408,6 +485,12 @@ layer {
     type: "Scale"
     bottom: "BatchNormBackward28"
     top: "BatchNormBackward28"
+    param {
+      lr_mult: 1
+    }
+    param {
+      lr_mult: 2
+    }
     scale_param {
         bias_term: true
     }
@@ -450,6 +533,12 @@ layer {
     type: "Scale"
     bottom: "BatchNormBackward31"
     top: "BatchNormBackward31"
+    param {
+      lr_mult: 1
+    }
+    param {
+      lr_mult: 2
+    }
     scale_param {
         bias_term: true
     }
@@ -492,6 +581,12 @@ layer {
     type: "Scale"
     bottom: "BatchNormBackward34"
     top: "BatchNormBackward34"
+    param {
+      lr_mult: 1
+    }
+    param {
+      lr_mult: 2
+    }
     scale_param {
         bias_term: true
     }
@@ -546,6 +641,12 @@ layer {
     type: "Scale"
     bottom: "BatchNormBackward38"
     top: "BatchNormBackward38"
+    param {
+      lr_mult: 1
+    }
+    param {
+      lr_mult: 2
+    }
     scale_param {
         bias_term: true
     }
@@ -588,6 +689,12 @@ layer {
     type: "Scale"
     bottom: "BatchNormBackward41"
     top: "BatchNormBackward41"
+    param {
+      lr_mult: 1
+    }
+    param {
+      lr_mult: 2
+    }
     scale_param {
         bias_term: true
     }
@@ -630,6 +737,12 @@ layer {
     type: "Scale"
     bottom: "BatchNormBackward44"
     top: "BatchNormBackward44"
+    param {
+      lr_mult: 1
+    }
+    param {
+      lr_mult: 2
+    }
     scale_param {
         bias_term: true
     }
