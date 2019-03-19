@@ -41,6 +41,14 @@ layer {
     type: "Convolution"
     bottom: "ConvNdBackward2"
     top: "ConvNdBackward3"
+    param {
+      lr_mult: 0
+      decay_mult: 0
+    }
+    param {
+      lr_mult: 0
+      decay_mult: 0
+    }
     convolution_param {
         num_output: 64
         pad: 1
@@ -77,6 +85,14 @@ layer {
     type: "Convolution"
     bottom: "BatchNormBackward4"
     top: "ConvNdBackward6"
+    param {
+      lr_mult: 0
+      decay_mult: 0
+    }
+    param {
+      lr_mult: 0
+      decay_mult: 0
+    }
     convolution_param {
         num_output: 64
         pad: 1
@@ -125,6 +141,14 @@ layer {
     type: "Convolution"
     bottom: "MaxPool2dBackward9"
     top: "ConvNdBackward10"
+    param {
+      lr_mult: 0
+      decay_mult: 0
+    }
+    param {
+      lr_mult: 0
+      decay_mult: 0
+    }
     convolution_param {
         num_output: 128
         pad: 1
@@ -161,6 +185,14 @@ layer {
     type: "Convolution"
     bottom: "BatchNormBackward11"
     top: "ConvNdBackward13"
+    param {
+      lr_mult: 0
+      decay_mult: 0
+    }
+    param {
+      lr_mult: 0
+      decay_mult: 0
+    }
     convolution_param {
         num_output: 128
         pad: 1
@@ -209,6 +241,12 @@ layer {
     type: "Convolution"
     bottom: "MaxPool2dBackward16"
     top: "ConvNdBackward17"
+    param {
+      lr_mult: 1
+    }
+    param {
+      lr_mult: 2
+    }
     convolution_param {
         num_output: 256
         pad: 1
@@ -245,6 +283,12 @@ layer {
     type: "Convolution"
     bottom: "BatchNormBackward18"
     top: "ConvNdBackward20"
+    param {
+      lr_mult: 1
+    }
+    param {
+      lr_mult: 2
+    }
     convolution_param {
         num_output: 256
         pad: 1
@@ -281,6 +325,12 @@ layer {
     type: "Convolution"
     bottom: "BatchNormBackward21"
     top: "ConvNdBackward23"
+    param {
+      lr_mult: 1
+    }
+    param {
+      lr_mult: 2
+    }
     convolution_param {
         num_output: 256
         pad: 1
@@ -329,6 +379,12 @@ layer {
     type: "Convolution"
     bottom: "MaxPool2dBackward26"
     top: "ConvNdBackward27"
+    param {
+      lr_mult: 1
+    }
+    param {
+      lr_mult: 2
+    }
     convolution_param {
         num_output: 512
         pad: 1
@@ -365,6 +421,12 @@ layer {
     type: "Convolution"
     bottom: "BatchNormBackward28"
     top: "ConvNdBackward30"
+    param {
+      lr_mult: 1
+    }
+    param {
+      lr_mult: 2
+    }
     convolution_param {
         num_output: 512
         pad: 1
@@ -401,6 +463,12 @@ layer {
     type: "Convolution"
     bottom: "BatchNormBackward31"
     top: "ConvNdBackward33"
+    param {
+      lr_mult: 1
+    }
+    param {
+      lr_mult: 2
+    }
     convolution_param {
         num_output: 512
         pad: 1
@@ -449,6 +517,12 @@ layer {
     type: "Convolution"
     bottom: "MaxPool2dBackward36"
     top: "ConvNdBackward37"
+    param {
+      lr_mult: 1
+    }
+    param {
+      lr_mult: 2
+    }
     convolution_param {
         num_output: 512
         pad: 1
@@ -485,6 +559,12 @@ layer {
     type: "Convolution"
     bottom: "BatchNormBackward38"
     top: "ConvNdBackward40"
+    param {
+      lr_mult: 1
+    }
+    param {
+      lr_mult: 2
+    }
     convolution_param {
         num_output: 512
         pad: 1
@@ -521,6 +601,12 @@ layer {
     type: "Convolution"
     bottom: "BatchNormBackward41"
     top: "ConvNdBackward43"
+    param {
+      lr_mult: 1
+    }
+    param {
+      lr_mult: 2
+    }
     convolution_param {
         num_output: 512
         pad: 1
@@ -740,6 +826,12 @@ layer {
     type: "InnerProduct"
     bottom: "pool5"
     top: "AddmmBackward47"
+    param {
+      lr_mult: 1
+    }
+    param {
+      lr_mult: 2
+    }
     inner_product_param {
         num_output: 4096
     }
@@ -764,6 +856,12 @@ layer {
     type: "InnerProduct"
     bottom: "AddmmBackward47"
     top: "AddmmBackward50"
+    param {
+      lr_mult: 1
+    }
+    param {
+      lr_mult: 2
+    }
     inner_product_param {
         num_output: 4096
     }
