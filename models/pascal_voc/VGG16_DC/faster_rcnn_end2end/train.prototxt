@@ -1,0 +1,842 @@
+name: "VGG_ILSVRC_16_layers"
+layer {
+  name: 'input-data'
+  type: 'Python'
+  top: 'data'
+  top: 'im_info'
+  top: 'gt_boxes'
+  python_param {
+    module: 'roi_data_layer.layer'
+    layer: 'RoIDataLayer'
+    param_str: "'num_classes': 21"
+  }
+}
+
+layer {
+    name: "ConvNdBackward1"
+    type: "Convolution"
+    bottom: "data"
+    top: "ConvNdBackward1"
+    convolution_param {
+        num_output: 1
+        pad: 0
+        kernel_size: 1
+        stride: 1
+    }
+}
+layer {
+    name: "ConvNdBackward2"
+    type: "Convolution"
+    bottom: "ConvNdBackward1"
+    top: "ConvNdBackward2"
+    convolution_param {
+        num_output: 2
+        pad: 1
+        kernel_size: 3
+        stride: 1
+    }
+}
+layer {
+    name: "ConvNdBackward3"
+    type: "Convolution"
+    bottom: "ConvNdBackward2"
+    top: "ConvNdBackward3"
+    convolution_param {
+        num_output: 64
+        pad: 1
+        kernel_size: 3
+        stride: 1
+    }
+}
+layer {
+    name: "BatchNormBackward4_bn"
+    type: "BatchNorm"
+    bottom: "ConvNdBackward3"
+    top: "BatchNormBackward4"
+    batch_norm_param {
+        use_global_stats: true
+    }
+}
+layer {
+    name: "BatchNormBackward4_scale"
+    type: "Scale"
+    bottom: "BatchNormBackward4"
+    top: "BatchNormBackward4"
+    scale_param {
+        bias_term: true
+    }
+}
+layer {
+    name: "ThresholdBackward5"
+    type: "ReLU"
+    bottom: "BatchNormBackward4"
+    top: "BatchNormBackward4"
+}
+layer {
+    name: "ConvNdBackward6"
+    type: "Convolution"
+    bottom: "BatchNormBackward4"
+    top: "ConvNdBackward6"
+    convolution_param {
+        num_output: 64
+        pad: 1
+        kernel_size: 3
+        stride: 1
+    }
+}
+layer {
+    name: "BatchNormBackward7_bn"
+    type: "BatchNorm"
+    bottom: "ConvNdBackward6"
+    top: "BatchNormBackward7"
+    batch_norm_param {
+        use_global_stats: true
+    }
+}
+layer {
+    name: "BatchNormBackward7_scale"
+    type: "Scale"
+    bottom: "BatchNormBackward7"
+    top: "BatchNormBackward7"
+    scale_param {
+        bias_term: true
+    }
+}
+layer {
+    name: "ThresholdBackward8"
+    type: "ReLU"
+    bottom: "BatchNormBackward7"
+    top: "BatchNormBackward7"
+}
+layer {
+    name: "MaxPool2dBackward9"
+    type: "Pooling"
+    bottom: "BatchNormBackward7"
+    top: "MaxPool2dBackward9"
+    pooling_param {
+        pool: MAX
+        kernel_size: 2
+        stride: 2
+        pad: 0
+    }
+}
+layer {
+    name: "ConvNdBackward10"
+    type: "Convolution"
+    bottom: "MaxPool2dBackward9"
+    top: "ConvNdBackward10"
+    convolution_param {
+        num_output: 128
+        pad: 1
+        kernel_size: 3
+        stride: 1
+    }
+}
+layer {
+    name: "BatchNormBackward11_bn"
+    type: "BatchNorm"
+    bottom: "ConvNdBackward10"
+    top: "BatchNormBackward11"
+    batch_norm_param {
+        use_global_stats: true
+    }
+}
+layer {
+    name: "BatchNormBackward11_scale"
+    type: "Scale"
+    bottom: "BatchNormBackward11"
+    top: "BatchNormBackward11"
+    scale_param {
+        bias_term: true
+    }
+}
+layer {
+    name: "ThresholdBackward12"
+    type: "ReLU"
+    bottom: "BatchNormBackward11"
+    top: "BatchNormBackward11"
+}
+layer {
+    name: "ConvNdBackward13"
+    type: "Convolution"
+    bottom: "BatchNormBackward11"
+    top: "ConvNdBackward13"
+    convolution_param {
+        num_output: 128
+        pad: 1
+        kernel_size: 3
+        stride: 1
+    }
+}
+layer {
+    name: "BatchNormBackward14_bn"
+    type: "BatchNorm"
+    bottom: "ConvNdBackward13"
+    top: "BatchNormBackward14"
+    batch_norm_param {
+        use_global_stats: true
+    }
+}
+layer {
+    name: "BatchNormBackward14_scale"
+    type: "Scale"
+    bottom: "BatchNormBackward14"
+    top: "BatchNormBackward14"
+    scale_param {
+        bias_term: true
+    }
+}
+layer {
+    name: "ThresholdBackward15"
+    type: "ReLU"
+    bottom: "BatchNormBackward14"
+    top: "BatchNormBackward14"
+}
+layer {
+    name: "MaxPool2dBackward16"
+    type: "Pooling"
+    bottom: "BatchNormBackward14"
+    top: "MaxPool2dBackward16"
+    pooling_param {
+        pool: MAX
+        kernel_size: 2
+        stride: 2
+        pad: 0
+    }
+}
+layer {
+    name: "ConvNdBackward17"
+    type: "Convolution"
+    bottom: "MaxPool2dBackward16"
+    top: "ConvNdBackward17"
+    convolution_param {
+        num_output: 256
+        pad: 1
+        kernel_size: 3
+        stride: 1
+    }
+}
+layer {
+    name: "BatchNormBackward18_bn"
+    type: "BatchNorm"
+    bottom: "ConvNdBackward17"
+    top: "BatchNormBackward18"
+    batch_norm_param {
+        use_global_stats: true
+    }
+}
+layer {
+    name: "BatchNormBackward18_scale"
+    type: "Scale"
+    bottom: "BatchNormBackward18"
+    top: "BatchNormBackward18"
+    scale_param {
+        bias_term: true
+    }
+}
+layer {
+    name: "ThresholdBackward19"
+    type: "ReLU"
+    bottom: "BatchNormBackward18"
+    top: "BatchNormBackward18"
+}
+layer {
+    name: "ConvNdBackward20"
+    type: "Convolution"
+    bottom: "BatchNormBackward18"
+    top: "ConvNdBackward20"
+    convolution_param {
+        num_output: 256
+        pad: 1
+        kernel_size: 3
+        stride: 1
+    }
+}
+layer {
+    name: "BatchNormBackward21_bn"
+    type: "BatchNorm"
+    bottom: "ConvNdBackward20"
+    top: "BatchNormBackward21"
+    batch_norm_param {
+        use_global_stats: true
+    }
+}
+layer {
+    name: "BatchNormBackward21_scale"
+    type: "Scale"
+    bottom: "BatchNormBackward21"
+    top: "BatchNormBackward21"
+    scale_param {
+        bias_term: true
+    }
+}
+layer {
+    name: "ThresholdBackward22"
+    type: "ReLU"
+    bottom: "BatchNormBackward21"
+    top: "BatchNormBackward21"
+}
+layer {
+    name: "ConvNdBackward23"
+    type: "Convolution"
+    bottom: "BatchNormBackward21"
+    top: "ConvNdBackward23"
+    convolution_param {
+        num_output: 256
+        pad: 1
+        kernel_size: 3
+        stride: 1
+    }
+}
+layer {
+    name: "BatchNormBackward24_bn"
+    type: "BatchNorm"
+    bottom: "ConvNdBackward23"
+    top: "BatchNormBackward24"
+    batch_norm_param {
+        use_global_stats: true
+    }
+}
+layer {
+    name: "BatchNormBackward24_scale"
+    type: "Scale"
+    bottom: "BatchNormBackward24"
+    top: "BatchNormBackward24"
+    scale_param {
+        bias_term: true
+    }
+}
+layer {
+    name: "ThresholdBackward25"
+    type: "ReLU"
+    bottom: "BatchNormBackward24"
+    top: "BatchNormBackward24"
+}
+layer {
+    name: "MaxPool2dBackward26"
+    type: "Pooling"
+    bottom: "BatchNormBackward24"
+    top: "MaxPool2dBackward26"
+    pooling_param {
+        pool: MAX
+        kernel_size: 2
+        stride: 2
+        pad: 0
+    }
+}
+layer {
+    name: "ConvNdBackward27"
+    type: "Convolution"
+    bottom: "MaxPool2dBackward26"
+    top: "ConvNdBackward27"
+    convolution_param {
+        num_output: 512
+        pad: 1
+        kernel_size: 3
+        stride: 1
+    }
+}
+layer {
+    name: "BatchNormBackward28_bn"
+    type: "BatchNorm"
+    bottom: "ConvNdBackward27"
+    top: "BatchNormBackward28"
+    batch_norm_param {
+        use_global_stats: true
+    }
+}
+layer {
+    name: "BatchNormBackward28_scale"
+    type: "Scale"
+    bottom: "BatchNormBackward28"
+    top: "BatchNormBackward28"
+    scale_param {
+        bias_term: true
+    }
+}
+layer {
+    name: "ThresholdBackward29"
+    type: "ReLU"
+    bottom: "BatchNormBackward28"
+    top: "BatchNormBackward28"
+}
+layer {
+    name: "ConvNdBackward30"
+    type: "Convolution"
+    bottom: "BatchNormBackward28"
+    top: "ConvNdBackward30"
+    convolution_param {
+        num_output: 512
+        pad: 1
+        kernel_size: 3
+        stride: 1
+    }
+}
+layer {
+    name: "BatchNormBackward31_bn"
+    type: "BatchNorm"
+    bottom: "ConvNdBackward30"
+    top: "BatchNormBackward31"
+    batch_norm_param {
+        use_global_stats: true
+    }
+}
+layer {
+    name: "BatchNormBackward31_scale"
+    type: "Scale"
+    bottom: "BatchNormBackward31"
+    top: "BatchNormBackward31"
+    scale_param {
+        bias_term: true
+    }
+}
+layer {
+    name: "ThresholdBackward32"
+    type: "ReLU"
+    bottom: "BatchNormBackward31"
+    top: "BatchNormBackward31"
+}
+layer {
+    name: "ConvNdBackward33"
+    type: "Convolution"
+    bottom: "BatchNormBackward31"
+    top: "ConvNdBackward33"
+    convolution_param {
+        num_output: 512
+        pad: 1
+        kernel_size: 3
+        stride: 1
+    }
+}
+layer {
+    name: "BatchNormBackward34_bn"
+    type: "BatchNorm"
+    bottom: "ConvNdBackward33"
+    top: "BatchNormBackward34"
+    batch_norm_param {
+        use_global_stats: true
+    }
+}
+layer {
+    name: "BatchNormBackward34_scale"
+    type: "Scale"
+    bottom: "BatchNormBackward34"
+    top: "BatchNormBackward34"
+    scale_param {
+        bias_term: true
+    }
+}
+layer {
+    name: "ThresholdBackward35"
+    type: "ReLU"
+    bottom: "BatchNormBackward34"
+    top: "BatchNormBackward34"
+}
+layer {
+    name: "MaxPool2dBackward36"
+    type: "Pooling"
+    bottom: "BatchNormBackward34"
+    top: "MaxPool2dBackward36"
+    pooling_param {
+        pool: MAX
+        kernel_size: 2
+        stride: 2
+        pad: 0
+    }
+}
+layer {
+    name: "ConvNdBackward37"
+    type: "Convolution"
+    bottom: "MaxPool2dBackward36"
+    top: "ConvNdBackward37"
+    convolution_param {
+        num_output: 512
+        pad: 1
+        kernel_size: 3
+        stride: 1
+    }
+}
+layer {
+    name: "BatchNormBackward38_bn"
+    type: "BatchNorm"
+    bottom: "ConvNdBackward37"
+    top: "BatchNormBackward38"
+    batch_norm_param {
+        use_global_stats: true
+    }
+}
+layer {
+    name: "BatchNormBackward38_scale"
+    type: "Scale"
+    bottom: "BatchNormBackward38"
+    top: "BatchNormBackward38"
+    scale_param {
+        bias_term: true
+    }
+}
+layer {
+    name: "ThresholdBackward39"
+    type: "ReLU"
+    bottom: "BatchNormBackward38"
+    top: "BatchNormBackward38"
+}
+layer {
+    name: "ConvNdBackward40"
+    type: "Convolution"
+    bottom: "BatchNormBackward38"
+    top: "ConvNdBackward40"
+    convolution_param {
+        num_output: 512
+        pad: 1
+        kernel_size: 3
+        stride: 1
+    }
+}
+layer {
+    name: "BatchNormBackward41_bn"
+    type: "BatchNorm"
+    bottom: "ConvNdBackward40"
+    top: "BatchNormBackward41"
+    batch_norm_param {
+        use_global_stats: true
+    }
+}
+layer {
+    name: "BatchNormBackward41_scale"
+    type: "Scale"
+    bottom: "BatchNormBackward41"
+    top: "BatchNormBackward41"
+    scale_param {
+        bias_term: true
+    }
+}
+layer {
+    name: "ThresholdBackward42"
+    type: "ReLU"
+    bottom: "BatchNormBackward41"
+    top: "BatchNormBackward41"
+}
+layer {
+    name: "ConvNdBackward43"
+    type: "Convolution"
+    bottom: "BatchNormBackward41"
+    top: "ConvNdBackward43"
+    convolution_param {
+        num_output: 512
+        pad: 1
+        kernel_size: 3
+        stride: 1
+    }
+}
+layer {
+    name: "BatchNormBackward44_bn"
+    type: "BatchNorm"
+    bottom: "ConvNdBackward43"
+    top: "BatchNormBackward44"
+    batch_norm_param {
+        use_global_stats: true
+    }
+}
+layer {
+    name: "BatchNormBackward44_scale"
+    type: "Scale"
+    bottom: "BatchNormBackward44"
+    top: "BatchNormBackward44"
+    scale_param {
+        bias_term: true
+    }
+}
+layer {
+    name: "ThresholdBackward45"
+    type: "ReLU"
+    bottom: "BatchNormBackward44"
+    top: "BatchNormBackward44"
+}
+
+
+#========= RPN ============
+
+layer {
+  name: "rpn_conv/3x3"
+  type: "Convolution"
+  bottom: "BatchNormBackward44"
+  top: "rpn/output"
+  param { lr_mult: 1.0 }
+  param { lr_mult: 2.0 }
+  convolution_param {
+    num_output: 512
+    kernel_size: 3 pad: 1 stride: 1
+    weight_filler { type: "gaussian" std: 0.01 }
+    bias_filler { type: "constant" value: 0 }
+  }
+}
+layer {
+  name: "rpn_relu/3x3"
+  type: "ReLU"
+  bottom: "rpn/output"
+  top: "rpn/output"
+}
+
+layer {
+  name: "rpn_cls_score"
+  type: "Convolution"
+  bottom: "rpn/output"
+  top: "rpn_cls_score"
+  param { lr_mult: 1.0 }
+  param { lr_mult: 2.0 }
+  convolution_param {
+    num_output: 18   # 2(bg/fg) * 9(anchors)
+    kernel_size: 1 pad: 0 stride: 1
+    weight_filler { type: "gaussian" std: 0.01 }
+    bias_filler { type: "constant" value: 0 }
+  }
+}
+
+layer {
+  name: "rpn_bbox_pred"
+  type: "Convolution"
+  bottom: "rpn/output"
+  top: "rpn_bbox_pred"
+  param { lr_mult: 1.0 }
+  param { lr_mult: 2.0 }
+  convolution_param {
+    num_output: 36   # 4 * 9(anchors)
+    kernel_size: 1 pad: 0 stride: 1
+    weight_filler { type: "gaussian" std: 0.01 }
+    bias_filler { type: "constant" value: 0 }
+  }
+}
+
+layer {
+   bottom: "rpn_cls_score"
+   top: "rpn_cls_score_reshape"
+   name: "rpn_cls_score_reshape"
+   type: "Reshape"
+   reshape_param { shape { dim: 0 dim: 2 dim: -1 dim: 0 } }
+}
+
+layer {
+  name: 'rpn-data'
+  type: 'Python'
+  bottom: 'rpn_cls_score'
+  bottom: 'gt_boxes'
+  bottom: 'im_info'
+  bottom: 'data'
+  top: 'rpn_labels'
+  top: 'rpn_bbox_targets'
+  top: 'rpn_bbox_inside_weights'
+  top: 'rpn_bbox_outside_weights'
+  python_param {
+    module: 'rpn.anchor_target_layer'
+    layer: 'AnchorTargetLayer'
+    param_str: "'feat_stride': 16"
+  }
+}
+
+layer {
+  name: "rpn_loss_cls"
+  type: "SoftmaxWithLoss"
+  bottom: "rpn_cls_score_reshape"
+  bottom: "rpn_labels"
+  propagate_down: 1
+  propagate_down: 0
+  top: "rpn_cls_loss"
+  loss_weight: 1
+  loss_param {
+    ignore_label: -1
+    normalize: true
+  }
+}
+
+layer {
+  name: "rpn_loss_bbox"
+  type: "SmoothL1Loss"
+  bottom: "rpn_bbox_pred"
+  bottom: "rpn_bbox_targets"
+  bottom: 'rpn_bbox_inside_weights'
+  bottom: 'rpn_bbox_outside_weights'
+  top: "rpn_loss_bbox"
+  loss_weight: 1
+  smooth_l1_loss_param { sigma: 3.0 }
+}
+
+#========= RoI Proposal ============
+
+layer {
+  name: "rpn_cls_prob"
+  type: "Softmax"
+  bottom: "rpn_cls_score_reshape"
+  top: "rpn_cls_prob"
+}
+
+layer {
+  name: 'rpn_cls_prob_reshape'
+  type: 'Reshape'
+  bottom: 'rpn_cls_prob'
+  top: 'rpn_cls_prob_reshape'
+  reshape_param { shape { dim: 0 dim: 18 dim: -1 dim: 0 } }
+}
+
+layer {
+  name: 'proposal'
+  type: 'Python'
+  bottom: 'rpn_cls_prob_reshape'
+  bottom: 'rpn_bbox_pred'
+  bottom: 'im_info'
+  top: 'rpn_rois'
+#  top: 'rpn_scores'
+  python_param {
+    module: 'rpn.proposal_layer'
+    layer: 'ProposalLayer'
+    param_str: "'feat_stride': 16"
+  }
+}
+
+#layer {
+#  name: 'debug-data'
+#  type: 'Python'
+#  bottom: 'data'
+#  bottom: 'rpn_rois'
+#  bottom: 'rpn_scores'
+#  python_param {
+#    module: 'rpn.debug_layer'
+#    layer: 'RPNDebugLayer'
+#  }
+#}
+
+layer {
+  name: 'roi-data'
+  type: 'Python'
+  bottom: 'rpn_rois'
+  bottom: 'gt_boxes'
+  top: 'rois'
+  top: 'labels'
+  top: 'bbox_targets'
+  top: 'bbox_inside_weights'
+  top: 'bbox_outside_weights'
+  python_param {
+    module: 'rpn.proposal_target_layer'
+    layer: 'ProposalTargetLayer'
+    param_str: "'num_classes': 21"
+  }
+}
+
+#========= RCNN ============
+
+layer {
+  name: "roi_pool5"
+  type: "ROIPooling"
+  bottom: "BatchNormBackward44"
+  bottom: "rois"
+  top: "pool5"
+  roi_pooling_param {
+    pooled_w: 7
+    pooled_h: 7
+    spatial_scale: 0.0625 # 1/16
+  }
+}
+layer {
+    name: "AddmmBackward47"
+    type: "InnerProduct"
+    bottom: "pool5"
+    top: "AddmmBackward47"
+    inner_product_param {
+        num_output: 4096
+    }
+}
+layer {
+    name: "ThresholdBackward48"
+    type: "ReLU"
+    bottom: "AddmmBackward47"
+    top: "AddmmBackward47"
+}
+layer {
+    name: "DropoutBackward49"
+    type: "Dropout"
+    bottom: "AddmmBackward47"
+    top: "AddmmBackward47"
+    dropout_param {
+        dropout_ratio: 0.5
+    }
+}
+layer {
+    name: "AddmmBackward50"
+    type: "InnerProduct"
+    bottom: "AddmmBackward47"
+    top: "AddmmBackward50"
+    inner_product_param {
+        num_output: 4096
+    }
+}
+layer {
+    name: "ThresholdBackward51"
+    type: "ReLU"
+    bottom: "AddmmBackward50"
+    top: "AddmmBackward50"
+}
+layer {
+  name: "cls_score"
+  type: "InnerProduct"
+  bottom: "AddmmBackward50"
+  top: "cls_score"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  inner_product_param {
+    num_output: 21
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "bbox_pred"
+  type: "InnerProduct"
+  bottom: "AddmmBackward50"
+  top: "bbox_pred"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  inner_product_param {
+    num_output: 84
+    weight_filler {
+      type: "gaussian"
+      std: 0.001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "loss_cls"
+  type: "SoftmaxWithLoss"
+  bottom: "cls_score"
+  bottom: "labels"
+  propagate_down: 1
+  propagate_down: 0
+  top: "loss_cls"
+  loss_weight: 1
+}
+layer {
+  name: "loss_bbox"
+  type: "SmoothL1Loss"
+  bottom: "bbox_pred"
+  bottom: "bbox_targets"
+  bottom: "bbox_inside_weights"
+  bottom: "bbox_outside_weights"
+  top: "loss_bbox"
+  loss_weight: 1
+}
