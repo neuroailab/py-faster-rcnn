@@ -26,45 +26,9 @@ layer {
 }
 
 layer {
-    name: "ConvNdBackward1"
-    type: "Convolution"
-    bottom: "data_scaled"
-    top: "ConvNdBackward1"
-    param {
-      lr_mult: 0
-    }
-    param {
-      lr_mult: 0
-    }
-    convolution_param {
-        num_output: 3
-        pad: 0
-        kernel_size: 1
-        stride: 1
-    }
-}
-layer {
-    name: "ConvNdBackward2"
-    type: "Convolution"
-    bottom: "ConvNdBackward1"
-    top: "ConvNdBackward2"
-    param {
-      lr_mult: 0
-    }
-    param {
-      lr_mult: 0
-    }
-    convolution_param {
-        num_output: 3
-        pad: 0
-        kernel_size: 1
-        stride: 1
-    }
-}
-layer {
     name: "ConvNdBackward3"
     type: "Convolution"
-    bottom: "ConvNdBackward2"
+    bottom: "data_scaled"
     top: "ConvNdBackward3"
     param {
       lr_mult: 0
