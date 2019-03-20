@@ -70,7 +70,7 @@ layer {
       lr_mult: 1
     }
     param {
-      lr_mult: 2
+      lr_mult: 1
     }
     convolution_param {
         num_output: 96
@@ -97,7 +97,7 @@ layer {
       lr_mult: 1
     }
     param {
-      lr_mult: 2
+      lr_mult: 1
     }
     scale_param {
         bias_term: true
@@ -130,7 +130,7 @@ layer {
       lr_mult: 1
     }
     param {
-      lr_mult: 2
+      lr_mult: 1
     }
     convolution_param {
         num_output: 256
@@ -157,7 +157,7 @@ layer {
       lr_mult: 1
     }
     param {
-      lr_mult: 2
+      lr_mult: 1
     }
     scale_param {
         bias_term: true
@@ -190,7 +190,7 @@ layer {
       lr_mult: 1
     }
     param {
-      lr_mult: 2
+      lr_mult: 1
     }
     convolution_param {
         num_output: 384
@@ -217,7 +217,7 @@ layer {
       lr_mult: 1
     }
     param {
-      lr_mult: 2
+      lr_mult: 1
     }
     scale_param {
         bias_term: true
@@ -238,7 +238,7 @@ layer {
       lr_mult: 1
     }
     param {
-      lr_mult: 2
+      lr_mult: 1
     }
     convolution_param {
         num_output: 384
@@ -265,7 +265,7 @@ layer {
       lr_mult: 1
     }
     param {
-      lr_mult: 2
+      lr_mult: 1
     }
     scale_param {
         bias_term: true
@@ -286,7 +286,7 @@ layer {
       lr_mult: 1
     }
     param {
-      lr_mult: 2
+      lr_mult: 1
     }
     convolution_param {
         num_output: 256
@@ -313,7 +313,7 @@ layer {
       lr_mult: 1
     }
     param {
-      lr_mult: 2
+      lr_mult: 1
     }
     scale_param {
         bias_term: true
@@ -447,7 +447,7 @@ layer {
       lr_mult: 1
     }
     param {
-      lr_mult: 2
+      lr_mult: 1
     }
     inner_product_param {
         num_output: 4096
@@ -477,7 +477,7 @@ layer {
       lr_mult: 1
     }
     param {
-      lr_mult: 2
+      lr_mult: 1
     }
     inner_product_param {
         num_output: 4096
